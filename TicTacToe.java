@@ -60,61 +60,46 @@ public class TicTacToe
 
 	public String getWinner()
 	{
-		String winType = " ";
-		String winner = " ";
-
-		if(mat[0][0] == mat[1][1] && mat[1][1] == mat[2][2] || mat[0][2] == mat[1][1] && mat[1][1] == mat[2][0])
+		//horizontal wins
+		if(mat[0][0] == mat[0][1] && mat[0][1] == mat[0][2])
 		{
-			winType = "Diagonaly";
-			if(mat[0][0] == 'X' || mat[2][0] == 'X')
-			{
-				winner = "X ";
-			}
-			else
-			{
-				winner = "O ";
-			}
+			return "" + mat[0][0] + " wins horizontally"; 
+		}
+		else if(mat[1][0] == mat[1][1] && mat[1][1] == mat[1][2])
+		{
+			return "" + mat[1][0] + " wins horizontally"; 
+		}
+		else if(mat[2][0] == mat[2][1] && mat[2][1] == mat[2][2])
+		{
+			return "" + mat[0][0] + " wins horizontally"; 
+		}
+		//vertical wins
+		else if(mat[0][0] == mat[1][0] && mat[1][0] == mat[2][0])
+		{
+			return "" + mat[0][0] + " wins vertically"; 
+		}
+		else if(mat[0][1] == mat[1][1] && mat[1][1] == mat[2][1])
+		{
+			return "" + mat[0][1] + " wins vertically"; 
+		}
+		else if(mat[0][2] == mat[1][2] && mat[1][2] == mat[2][2])
+		{
+			return "" + mat[0][2] + " wins vertically"; 
+		}
+		//diagonal wins
+		else if(mat[0][0] == mat[1][1] && mat[1][1] == mat[2][2])
+		{
+			return "" + mat[0][0] + " wins diagonally";
+		}
+		else if(mat[2][0] == mat[1][1] && mat[1][1] == mat[0][2])
+		{
+			return "" + mat[2][0] + " wins diagonally";
+		}
+		else
+		{
+			return "There is a tie!";
 		}
 
-		for(int row = 0; row < mat.length; row++)
-		{
-			if(mat[row][0] == mat[row][1] && mat[row][1] == mat[row][2])
-			{
-				winType = "Horizontaly";
-
-				if(mat[row][0] == 'X')
-				{
-					winner = "X ";
-				}
-				else
-				{
-					winner = "O ";
-				}
-			}
-		}
-
-		for(int col = 0; col < mat[0].length; col++)
-		{
-			if(mat[0][col] == mat[1][col] && mat[1][col] == mat[1][col])
-			{
-				winType = "Verticaly";
-
-				if(mat[0][col] == 'X')
-				{
-					winner = "X ";
-				}
-				else if(mat[0][col] == 'O')
-				{
-					winner = "O ";
-				}
-				else
-				{
-					return "Cat!";
-				}
-			}
-		}
-
-		return "" + winner + "won " + winType;
 	}
 
 	public String toString()
